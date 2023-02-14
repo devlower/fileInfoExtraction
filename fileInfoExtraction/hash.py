@@ -12,8 +12,6 @@ def hash_file(file_path, algorithm='sha256') -> str:
             buf = f.read(BUFSIZE)
     return hasher.hexdigest()
 
-print(hash_file(Path('D:\\d_desktop\\CC\\thesea\\casoPratico01TentativaPhishing_Email_Header.txt'), 'md5'))
-
 
 
 

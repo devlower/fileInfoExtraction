@@ -43,6 +43,3 @@ def full_report(file_path: str) -> str:
     return f'File name: {file_name(Path(file_path))}\nFile size: {file_size(Path(file_path))} kB\nCreation time: {file_creation_time(Path(file_path))}\nModification time: {file_modification_time(Path(file_path))}\nAccess time: {file_access_time(Path(file_path))}\nNumber of lines: {file_number_of_lines(Path(file_path))}\nNumber of words: {file_number_of_words(Path(file_path))}\nEncoding: {Path(file_path)}'
 
 
-print(full_report('/mnt/d/d_desktop/chata/chata.jpg'))
-
-
