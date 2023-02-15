@@ -1,6 +1,6 @@
 # File Info Extraction
 
-<img align="right" alt="File Info Extraction Icon" src="src/fie-icon.png">
+<img align="right" alt="File Info Extraction Icon" width="150" src="./src/fie-icon.png">
 
 File Info Extraction is a Python library that provides a simple and efficient way to extract various types of information from files, including their name, type, size, and creation/modification times.
 
