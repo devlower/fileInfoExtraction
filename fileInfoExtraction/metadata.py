@@ -10,41 +10,39 @@ import magic
 def file_name(file_path: str) -> str:
     """
     Return the file name from a given file path.
-    
+
     Parameters
     ----------
     file_path : str
         The path to the file.
-    
+
     Returns
     -------
     str
         The name of the file.
     """
-    return Path(file_path).name
-
-
+    return str(Path(file_path).name)
 
 
 def file_type(file_path: str) -> any:
     """
     Get the type of the file specified by `file_path`.
-    
+
     Parameters
     ----------
     file_path : str
         The path of the file whose type is to be determined.
-    
+
     Returns
     -------
     str
         A string representing the type of the file.
-    
+
     Notes
     -----
-    This function uses the `magic` library to determine the file type. The `magic` library reads the 
-    file contents and determines the file type based on the contents. 
-    
+    This function uses the `magic` library to determine the file type. The `magic` library reads the
+    file contents and determines the file type based on the contents.
+
     Examples
     --------
     Get the type of a file:
@@ -59,23 +57,23 @@ def file_type(file_path: str) -> any:
 def file_size(file_path: str) -> float:
     """
     Get the size of a file in kilobytes (KB).
-    
+
     Parameters
     ----------
     file_path : str
         The path to the file.
-        
+
     Returns
     -------
     float
         The file size in kilobytes (KB).
-        
+
     Example
     -------
     >>> file_size('/path/to/file.txt')
     1024.0
     """
-    return os.path.getsize(Path(file_path)) / 1024
+    return float(os.path.getsize(Path(file_path)) / 1024)
 
 
 def file_creation_time(file_path: str) -> str:
@@ -92,8 +90,10 @@ def file_creation_time(file_path: str) -> str:
         A formatted string representing the creation time of the file in the format "dd/mm/yyyy hh:mm:ss".
 
     """
-    return datetime.fromtimestamp(os.path.getctime(Path(file_path))).strftime(
-        "%d/%m/%Y %H:%M:%S"
+    return str(
+        datetime.fromtimestamp(os.path.getctime(Path(file_path))).strftime(
+            "%d/%m/%Y %H:%M:%S"
+        )
     )
 
 
@@ -159,16 +159,28 @@ def find_keywords(file_path, keywords: list[str]):
                 if keyword.upper() in line.upper():
                     print(f"'{keyword}' keyword found on line {line_num}: '{line}'\n")
         else:
-            print(f"\nNo occurrences of '{keyword}' keyword found in {file_name(file_path)}\n")
+            print(
+                f"\nNo occurrences of '{keyword}' keyword found in {file_name(file_path)}\n"
+            )
 
 
 def full_report(file_path: str) -> str:
-    report = f"File name: {file_name(file_path)}\nFile type: {file_type(file_path)}\nFile size: {file_size(file_path)} KB\nCreation time: {file_creation_time(file_path)}\nModification time: {file_modification_time(file_path)}\nAccess time: {file_access_time(file_path)}\nNumber of lines: {file_number_of_lines(file_path)}\nNumber of words: {file_number_of_words(file_path)}\nEncoding: {file_encoding(file_path)}"
+    report = f"\
+        File name: {file_name(file_path)}\n\
+        File type: {file_type(file_path)}\n\
+        File size: {file_size(file_path)} KB\n\
+        Creation time: {file_creation_time(file_path)}\n\
+        Modification time: {file_modification_time(file_path)}\n\
+        Access time: {file_access_time(file_path)}\n\
+        Number of lines: {file_number_of_lines(file_path)}\n\
+        Number of words: {file_number_of_words(file_path)}\n\
+        Encoding: {file_encoding(file_path)}\
+    "
     return report
 
 
-file_path = "/mnt/d/d_desktop/cc/thesea/casoPratico01TentativaPhishing_Email_Header.txt"
-find_keywords(file_path, ["bitcoin", "wallet"])
+# file_path = "/mnt/d/d_desktop/cc/thesea/casoPratico01TentativaPhishing_Email_Header.txt"
+# find_keywords(file_path, ["bitcoin", "wallet"])
 
 # print(
 #     full_report(
